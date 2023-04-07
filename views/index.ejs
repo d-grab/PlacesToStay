@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+    <script type='text/javascript' src='index.js' defer></script>
+
+
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('./navbar.ejs'); %>
+    
+  <% if(locals.is_logged_in) { %>
+      <div style="margin-top: 10px">You are logged in as </div>
+      <h3><%= locals.username %></h3>
+  <% }else { %>
+    <div style="margin-top: 10px" >You need to log in to make any bookings</div>
+  <% } %>
+    
+    <div class="search" style="margin-left: 10px">
+      
+      <br/> 
+        <p>
+          <h2></h2>
+        In what location you are looking for a place  :<br/> 
+        <input id="ht_location" type="search" autocomplete="on" value="colorado" placeholder="Search" style="height: 40px; margin-top: 10px;"/>
+        <input class="btn btn-outline-success mr-auto" type="button" id="find" value="Search" ><i class="fa fa-search"></i></input>
+        </p>
+        
+        <input type="hidden" id="map-container" value="<%= locals.username %>">
+        <div id="ht_results"></div>    <br/>
+        
+        <h1>Map</h1>
+        <div style="margin-bottom:30px ; height:700px" id="map" > </div>    
+    </div>
+    
+
+    <!-- style="height:700px ; width:1500px ; margin-bottom: 10%;"  -->
+ 
+</body>
+</html>
